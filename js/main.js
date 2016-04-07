@@ -167,7 +167,7 @@ var mainState = {
 			game.scale.pageAlignVertically = true;
 		}*/
         game.physics.startSystem(Phaser.Physics.ARCADE);
-		this.road = game.add.sprite(0, 0, 'road');
+		this.road = game.add.sprite(0, 0, 'road'); 
 		this.road.height = game.height;
     	this.road.width = game.width;
         this.pipes = game.add.group();
