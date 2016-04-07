@@ -3,7 +3,7 @@ var menuGroup;
 var score = 0 ;
 
 window.onload = function() {	      
-	game = new Phaser.Game(540, 600, "gameDiv");
+	game = new Phaser.Game(640, 960, "gameDiv");
     game.state.add("Boot", boot);
     game.state.add("Preload", preload);
     game.state.add("GameTitle", gameTitle);
@@ -171,9 +171,11 @@ var mainState = {
 		this.road.height = game.height;
     	this.road.width = game.width;
         this.pipes = game.add.group();
-        this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);           
- 		this.hands = game.add.sprite(0, 40, 'hands');
+        this.timer = game.time.events.loop(2300, this.addRowOfPipes, this);           
+ 		this.hands = game.add.sprite(0, game.height / 2 - 250, 'hands');
         this.bird = game.add.sprite(100, 245, 'bird');
+		this.bird.height = 100;
+		this.bird.width = 100;
         game.physics.arcade.enable(this.bird);
         this.bird.body.gravity.y = 1000; 
 
@@ -208,7 +210,7 @@ var mainState = {
         if (this.bird.alive == false)
             return; 
 
-        this.bird.body.velocity.y = -350;
+        this.bird.body.velocity.y = -400;
 
         // Jump animation
         game.add.tween(this.bird).to({angle: -20}, 100).start();
@@ -252,7 +254,7 @@ var mainState = {
         var hole = Math.floor(Math.random()*5)+1;
         
         for (var i = 0; i < 10; i++)
-            if (i != hole && i != hole +1) this.addOnePipe(400, i*60+10);  
+            if (i != hole && i != hole +1) this.addOnePipe(500, i*100+20);  
 			 
     
         this.score += 1;
