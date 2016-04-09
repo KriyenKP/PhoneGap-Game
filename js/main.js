@@ -3,13 +3,14 @@ var menuGroup;
 var score = 0 ;
 
 window.onload = function() {	      
-	game = new Phaser.Game(640, 960, "gameDiv");
+	game = new Phaser.Game(640, 980, "gameDiv");
     game.state.add("Boot", boot);
     game.state.add("Preload", preload);
     game.state.add("GameTitle", gameTitle);
 	game.state.add('main', mainState);
 	game.state.add('lose', loseState);  
 	game.state.start("Boot");
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -35,7 +36,11 @@ var loseState = function(game){};
 loseState.prototype = 
 {
      create: function(){
-		 
+
+	game.load.audio('count', 'assets/sounds/zumaCount.ogg'); 		
+	this.loseSound = game.add.audio('count');
+		this.loseSound.play(); 
+	
 		  this.loser = game.add.text(game.width / 2 - 160, 60, "0", { font: "60px Arial", fill: "#ffffff" });  
 		  this.loser.text = "YOU LOSE!";  
 		 
@@ -46,25 +51,23 @@ loseState.prototype =
 		  if(score == "undefined") score = 0;
 		  this.labelScore.text = ""+score; 
 		  
-		  
-		  
-          /*var title = game.add.sprite(game.width / 2, 60, "gametitle");
-          title.anchor.set(0.5);
-          var grid = game.add.sprite(game.width / 2, 130, "gridedition");
-          grid.anchor.set(0.5); */
           var playButton = game.add.button(game.width / 2, game.height / 2 + 10, "playbutton", function()
-		  {game.state.start('main');});
+		  {game.state.start('main');this.loseSound.pause();});
           playButton.anchor.set(0.5);
           menuGroup = game.add.group();
           var menuButton = game.add.button(game.width / 2, game.height - 30, "menubutton", toggleMenu);
           menuButton.anchor.set(0.5);
           menuGroup.add(menuButton);
-          var resetGame = game.add.button(game.width / 2, game.height + 50, "resetgame", function(){game.state.start('Boot');});
+          var resetGame = game.add.button(game.width / 2, game.height + 50, "resetgame", function()
+		  {game.state.start('Boot'); this.loseSound.pause();});
           resetGame.anchor.set(0.5);
           menuGroup.add(resetGame);
-          var thankYou = game.add.button(game.width / 2, game.height + 130, "thankyou", function(){});
+          var thankYou = game.add.button(game.width / 2, game.height + 130, "thankyou", function()
+		  {this.loseSound.stop();});
           thankYou.anchor.set(0.5);
-          menuGroup.add(thankYou);          
+          menuGroup.add(thankYou);  
+      
+		  
      }
 }
 
@@ -80,6 +83,12 @@ preload.prototype = {
           game.load.image("menubutton", "assets/sprites/menubutton.png");
           game.load.image("resetgame", "assets/sprites/resetgame.png");
           game.load.image("thankyou", "assets/sprites/thankyou.png");
+		  game.load.image("share", "assets/sprites/share.png");
+		  game.load.audio('hehe', 'assets/sounds/hehe.ogg'); 
+		  game.load.audio('ow', 'assets/sounds/ow.ogg'); 
+		  game.load.audio('count', 'assets/sounds/zumaCount.ogg'); 
+		  game.load.audio('POO', 'assets/sounds/pointOfOrder.ogg'); 
+
 	},
   	create: function(){
 		game.state.start("GameTitle");
@@ -92,11 +101,16 @@ var gameTitle = function(game){}
 
 gameTitle.prototype = {
      create: function(){
-          var title = game.add.sprite(game.width / 2, 60, "gametitle");
+          var title = game.add.sprite(game.width / 2, 100, "gametitle");
           title.anchor.set(0.5); 
-          var grid = game.add.sprite(game.width / 2, 130, "gridedition");
-          grid.anchor.set(0.5);
-          var playButton = game.add.button(game.width / 2, game.height / 2 + 10, "playbutton", function(){game.state.start('main');});
+		  
+		  var caption = game.add.text(game.width/2-180, 150, "0", { font: "30px Arial", fill: "#ffffff" });  
+		  caption.text = "Will Zupta outrun the public?";  
+          
+		  //var grid = game.add.sprite(game.width / 2, 130, "gridedition");
+          //grid.anchor.set(0.5);
+          var playButton = game.add.button(game.width / 2, game.height / 2 + 10, "playbutton", function()
+		  {game.state.start('main');});
           playButton.anchor.set(0.5);
           menuGroup = game.add.group();
           var menuButton = game.add.button(game.width / 2, game.height - 30, "menubutton", toggleMenu);
@@ -105,9 +119,13 @@ gameTitle.prototype = {
           var resetGame = game.add.button(game.width / 2, game.height + 50, "resetgame", function(){});
           resetGame.anchor.set(0.5);
           menuGroup.add(resetGame);
-          var thankYou = game.add.button(game.width / 2, game.height + 130, "thankyou", function(){});
-          thankYou.anchor.set(0.5);
-          menuGroup.add(thankYou);          
+          var share = game.add.button(game.width / 2, game.height + 130, "share", function(){});
+          share.anchor.set(0.5);
+          menuGroup.add(share);
+		  this.POO = game.add.audio('POO');
+		  this.POO.play();
+
+          
      }
 }
 
@@ -134,7 +152,6 @@ var mainState = {
             game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             game.scale.setMinMax(game.width, game.height, game.width, game.height);
         }
-        
         game.scale.pageAlignHorizontally = true;
         game.scale.pageAlignVertically = true;
 
@@ -142,10 +159,11 @@ var mainState = {
 		game.load.image('road', 'assets/sprites/road.png');
         game.load.image('bird', 'assets/sprites/zuma.png');
 		game.load.image('hands', 'assets/sprites/hands.png');  
-        game.load.image('pipe', 'assets/sprites/van.png'); 
+        game.load.image('pipe', 'assets/sprites/van.png');
+
 
         // Load the jump sound
-        game.load.audio('jump', 'assets/jump.wav'); 
+       // game.load.audio('jump', 'assets/jump.wav'); 
     },
 
     create: function() { 
@@ -166,15 +184,19 @@ var mainState = {
 			game.scale.pageAlignHorizontally = true;
 			game.scale.pageAlignVertically = true;
 		}*/
+		
         game.physics.startSystem(Phaser.Physics.ARCADE);
 		this.road = game.add.sprite(0, 0, 'road'); 
+		
+		//this.road = this.game.add.tileSprite(100, 100, 335, 112, 'assets/sprites/road.png');
+        //this.road.autoScroll(-200, 0);
 		this.road.height = game.height;
     	this.road.width = game.width;
         this.pipes = game.add.group();
         this.timer = game.time.events.loop(2300, this.addRowOfPipes, this);           
  		this.hands = game.add.sprite(0, game.height / 2 - 250, 'hands');
         this.bird = game.add.sprite(100, 245, 'bird');
-		this.bird.height = 100;
+		this.bird.height = 95;
 		this.bird.width = 100;
         game.physics.arcade.enable(this.bird);
         this.bird.body.gravity.y = 1000; 
@@ -189,9 +211,11 @@ var mainState = {
         this.score = 0;
         this.labelScore = game.add.text(20, 20, "0", { font: "30px Arial", fill: "#ffffff" });  
 
+		this.ow = game.add.audio('ow');
+	    this.lose = game.add.audio("count");
         // Add the jump sound
-        this.jumpSound = game.add.audio('jump');
-        this.jumpSound.volume = 0.2;
+        this.hehe = game.add.audio('hehe');
+        this.hehe.volume = 0.2;
     },
 
     update: function() {
@@ -216,7 +240,6 @@ var mainState = {
         game.add.tween(this.bird).to({angle: -20}, 100).start();
 
         // Play sound
-        this.jumpSound.play();
     },
 
     hitPipe: function() {
@@ -226,7 +249,7 @@ var mainState = {
             
         // Set the alive property of the bird to false
         this.bird.alive = false;
-
+		this.ow.play();
         // Prevent new pipes from appearing
         game.time.events.remove(this.timer);
     
@@ -234,10 +257,12 @@ var mainState = {
         this.pipes.forEach(function(p){
             p.body.velocity.x = 0;
         }, this);
+ 
     },
 
     restartGame: function() {
         game.state.start('lose');
+		//this.loseSound.pause();
     },
 
     addOnePipe: function(x, y) {
@@ -258,6 +283,7 @@ var mainState = {
 			 
     
         this.score += 1;
+		this.hehe.play();
         this.labelScore.text = this.score;  
 		score = this.score;
     },
