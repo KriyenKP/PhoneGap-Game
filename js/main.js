@@ -3,14 +3,13 @@ var menuGroup;
 var score = 0 ;
 
 window.onload = function() {	      
-	game = new Phaser.Game(640, 980, "gameDiv");
+	game = new Phaser.Game(640, 1024, "gameDiv");
     game.state.add("Boot", boot);
     game.state.add("Preload", preload);
     game.state.add("GameTitle", gameTitle);
 	game.state.add('main', mainState);
 	game.state.add('lose', loseState);  
 	game.state.start("Boot");
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -19,11 +18,11 @@ var boot = function(game){};
 
 boot.prototype = {
      preload: function(){
-          game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		game.scale.setScreenSize = true;
-          game.scale.pageAlignHorizontally = true;
+        game.scale.pageAlignHorizontally = true;
 		game.scale.pageAlignVertically = true;
-          game.stage.backgroundColor = "#020028";
+        game.stage.backgroundColor = "#020028";
      },
   	create: function(){
 		game.state.start("Preload");
@@ -167,24 +166,7 @@ var mainState = {
     },
 
     create: function() { 
-	
-			// If this is not a desktop (so it's a mobile device) 
-		/*if (game.device.desktop == false) 
-		{
-			// Set the scaling mode to SHOW_ALL to show all the game
-			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-		
-			// Set a minimum and maximum size for the game
-			// Here the minimum is half the game size
-			// And the maximum is the original game size
-			game.scale.setMinMax(game.width/2, game.height/2, 
-				game.width, game.height);
-		
-			// Center the game horizontally and vertically
-			game.scale.pageAlignHorizontally = true;
-			game.scale.pageAlignVertically = true;
-		}*/
-		
+
         game.physics.startSystem(Phaser.Physics.ARCADE);
 		this.road = game.add.sprite(0, 0, 'road'); 
 		
@@ -213,9 +195,8 @@ var mainState = {
 
 		this.ow = game.add.audio('ow');
 	    this.lose = game.add.audio("count");
-        // Add the jump sound
         this.hehe = game.add.audio('hehe');
-        this.hehe.volume = 0.2;
+        //this.hehe.volume = 0.2;
     },
 
     update: function() {
