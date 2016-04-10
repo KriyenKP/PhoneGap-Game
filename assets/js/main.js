@@ -3,7 +3,7 @@ var menuGroup;
 var score = 0 ;
 
 window.onload = function() {	      
-	game = new Phaser.Game(640, 1024, "gameDiv");
+	game = new Phaser.Game(600, 1024, "gameDiv");
     game.state.add("Boot", boot);
     game.state.add("Preload", preload);
     game.state.add("GameTitle", gameTitle);
@@ -40,18 +40,29 @@ loseState.prototype =
 	this.loseSound = game.add.audio('count');
 		this.loseSound.play(); 
 	
-		  this.loser = game.add.text(0, 120, "0", { font: "50px Arial", fill: "#ffffff" });  
-		  this.loser.text = "You'll never outrun the public!";  
-		 
-		  this.labelScore = game.add.text(game.width / 2 - 130, 180, "0", { font: "50px Arial", fill: "#ffffff" });  
-		  this.labelScore.text = "Your score is :"; 
+	//var style = { font: 'bold 60pt Arial', fill: 'white', align: 'left', wordWrap: true, wordWrapWidth: 450 };
+
+   // var text = game.add.text(game.world.centerX, game.world.centerY, "phaser with a sprinkle of pixi dust", style);
+
+
+
 		  
-		  this.labelScore = game.add.text(game.width / 2 - 10, 240, "0", { font: "60px Arial", fill: "#ffffff" });  
+	
+		  this.loser = game.add.text(game.world.centerX, 120, "0", { font: "60px Arial", align:'center', fill: "#ffffff",wordWrap: true, wordWrapWidth: 500  });  
+		  this.loser.text = "You'll never outrun the public!";  
+		  this.loser.anchor.set(0.5);
+		 
+		  this.labelScore = game.add.text(game.world.centerX, 240, "0", { font: "40px Arial", align:'center', fill: "#ffffff",wordWrap: true, wordWrapWidth: 500   });  
+		  this.labelScore.text = "Your score is :";
+		  this.labelScore.anchor.set(0.5);
+		  
+		  this.labelScore = game.add.text(game.world.centerX, 320, "0", { font: "60px Arial", align:'center', fill: "#ffffff",wordWrap: true, wordWrapWidth: 500   });  
 		  if(score == "undefined") score = 0;
 		  this.labelScore.text = ""+score; 
+		  this.labelScore.anchor.set(0.5);
 		  
-          var playButton = game.add.button(game.width / 2, game.height / 2 + 10, "playbutton", function()
-		  {game.state.start('main');this.loseSound.pause();});
+          var playButton = game.add.button(game.world.centerX, game.height / 2 + 10, "playbutton", function()
+		  {game.state.start('main');});
           playButton.anchor.set(0.5);
           menuGroup = game.add.group();
           var menuButton = game.add.button(game.width / 2, game.height - 30, "menubutton", toggleMenu);
@@ -171,10 +182,11 @@ var mainState = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
 		this.road = game.add.sprite(0, 0, 'road'); 
 		
-		//this.road = this.game.add.tileSprite(100, 100, 335, 112, 'assets/sprites/road.png');
+		this.road = this.game.add.tileSprite(0, 0, 600, 1024, 'road');
         //this.road.autoScroll(-200, 0);
 		this.road.height = game.height;
-    	this.road.width = game.width;
+		this.road.autoScroll(-100,0);
+    	//this.road.width = game.width;
         this.pipes = game.add.group();
         this.timer = game.time.events.loop(2300, this.addRowOfPipes, this);           
  		this.hands = game.add.sprite(0, game.height / 2 - 250, 'hands');
