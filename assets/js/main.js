@@ -4,7 +4,7 @@ var score = 0 ;
 
 window.onload = function() {	
       
-	game = new Phaser.Game(600, 1024, "gameDiv");
+	game = new Phaser.Game(620, 1024, "gameDiv");
     game.state.add("Boot", boot);
     game.state.add("Preload", preload);
     game.state.add("GameTitle", gameTitle);
