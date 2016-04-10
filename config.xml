@@ -3,5 +3,4 @@
 version="1.0.0"
 xmlns="http://www.w3.org/ns/widgets" 
 xmlns:gap="http://phonegap.com/ns/1.0">
-<gap:plugin name="cordova-admob" source="npm"/>
-</widget>
+<gap:plugin name="admob" version="5.4.2" source="npm"/></widget>
