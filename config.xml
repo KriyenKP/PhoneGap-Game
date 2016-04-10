@@ -5,7 +5,4 @@ xmlns="http://www.w3.org/ns/widgets"
 <gap:plugin name="admob" version="5.4.2" source="npm"/>
 <name>Run Zupta, Run!</name> 
 <icon src='./assets/favicon/android-icon-48x48.png' />
-
-    </platform>
-
 </widget>
