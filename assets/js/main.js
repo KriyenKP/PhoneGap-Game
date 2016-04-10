@@ -249,6 +249,11 @@ var mainState = {
         this.bird.alive = false;
 		this.ow.play();
 		this.ow.volume = 1;
+		
+		if("vibrate" in window.navigator) 
+		{
+    		window.navigator.vibrate(100);
+		}
         // Prevent new pipes from appearing
         game.time.events.remove(this.timer);
     
