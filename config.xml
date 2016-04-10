@@ -4,5 +4,12 @@ version="1.0.0"
 xmlns="http://www.w3.org/ns/widgets" 
 <gap:plugin name="admob" version="5.4.2" source="npm"/>
 <name>Run Zupta, Run!</name> 
-<icon gap:platform="android" src="/assets/favicons/android-icon-48x48.png" />
+
+<icon src="/assets/favicons/android-icon-48x48.png" platform="android" qualifier="ldpi" />
+<icon src="/assets/favicons/android-icon-48x48.png" platform="android" qualifier="mdpi" />
+<icon src="/assets/favicons/android-icon-48x48.png" platform="android" qualifier="hdpi" />
+<icon src="/assets/favicons/android-icon-48x48.png" platform="android" qualifier="xhdpi" />
+<icon src="/assets/favicons/android-icon-48x48.png" platform="android" qualifier="xxhdpi" />
+<icon src="/assets/favicons/android-icon-48x48.png" platform="android" qualifier="fr-xxhdpi" />
+
 </widget>
