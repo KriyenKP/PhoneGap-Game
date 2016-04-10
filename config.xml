@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.example.app" 
+<widget id="com.inhub.zuptaRun"
+<name>Run Zupta, Run!</name> 
 version="1.0.0"
 xmlns="http://www.w3.org/ns/widgets" 
 <gap:plugin name="admob" version="5.4.2" source="npm"/>
