@@ -2,7 +2,9 @@ var game;
 var menuGroup;
 var score = 0 ;
 
-window.onload = function() {	      
+window.onload = function() {	
+    admob.initAdmob("ca-app-pub-4905155282469394/3332065665","ca-app-pub-4905155282469394/6425132868");
+	admob.showBanner(admob.BannerSize.BANNER,admob.Position.BOTTOM_APP);//show banner at the top of app 
 	game = new Phaser.Game(600, 1024, "gameDiv");
     game.state.add("Boot", boot);
     game.state.add("Preload", preload);
@@ -11,7 +13,7 @@ window.onload = function() {
 	game.state.add('lose', loseState);  
 	game.state.start("Boot");
 	
-}
+} 
 
 
 
