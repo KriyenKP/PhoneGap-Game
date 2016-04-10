@@ -18,6 +18,8 @@
     </author>
 <gap:plugin name="admob" version="5.4.2" source="npm"/>
 
+<icon src="/res/icon/android/android-icon-48x48.png" />
+
 <icon src="/res/icon/android/android-icon-36x36.png" platform="android" qualifier="ldpi" />
 <icon src="/res/icon/android/android-icon-48x48.png" platform="android" qualifier="mdpi" />
 <icon src="/res/icon/android/android-icon-72x72.png" platform="android" qualifier="hdpi" />
