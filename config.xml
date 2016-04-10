@@ -4,14 +4,7 @@ version="1.0.0"
 xmlns="http://www.w3.org/ns/widgets" 
 <gap:plugin name="admob" version="5.4.2" source="npm"/>
 <name>Run Zupta, Run!</name> 
-
-   <platform name="android">
-        <icon src="www/assets/favicon/android-icon-36x36.png" density="ldpi" />
-        <icon src="www/assets/favicon/android-icon-48x48.png" density="mdpi" />
-        <icon src="www/assets/favicon/android-icon-72x72.png" density="hdpi" />
-        <icon src="www/assets/favicon/android-icon-96x96.png" density="xhdpi" />
-        <icon src="www/assets/favicon/android-icon-144x144.png" density="xxhdpi" />
-        <icon src="www/assets/favicon/android-icon-192x192.png" density="xxxhdpi" />
+<icon src='./assets/favicon/android-icon-48x48.png' />
 
     </platform>
 
