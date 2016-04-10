@@ -46,4 +46,11 @@
 
     <div id="gameDiv"></div>
     <script src="./assets/js/admob.js"></script>
+    <script type="text/javascript">
+    function onDeviceReady() {
+        admob.initAdmob("ca-app-pub-4905155282469394/3332065665","ca-app-pub-4905155282469394/6425132868");
+    }
+    document.addEventListener('deviceready',onDeviceReady, false);
+	admob.showBanner(admob.BannerSize.SMART_BANNER,admob.Position.BOTTOM_CENTER);
+</script>
 </body></html>

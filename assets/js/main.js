@@ -10,7 +10,10 @@ window.onload = function() {
 	game.state.add('main', mainState);
 	game.state.add('lose', loseState);  
 	game.state.start("Boot");
+	
 }
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
