@@ -40,13 +40,13 @@ loseState.prototype =
 	this.loseSound = game.add.audio('count');
 		this.loseSound.play(); 
 	
-		  this.loser = game.add.text(game.width / 2 - 160, 60, "0", { font: "60px Arial", fill: "#ffffff" });  
-		  this.loser.text = "YOU LOSE!";  
+		  this.loser = game.add.text(0, 120, "0", { font: "50px Arial", fill: "#ffffff" });  
+		  this.loser.text = "You'll never outrun the public!";  
 		 
-		  this.labelScore = game.add.text(game.width / 2 - 130, 120, "0", { font: "40px Arial", fill: "#ffffff" });  
+		  this.labelScore = game.add.text(game.width / 2 - 130, 180, "0", { font: "50px Arial", fill: "#ffffff" });  
 		  this.labelScore.text = "Your score is :"; 
 		  
-		  this.labelScore = game.add.text(game.width / 2 - 10, 180, "0", { font: "40px Arial", fill: "#ffffff" });  
+		  this.labelScore = game.add.text(game.width / 2 - 10, 240, "0", { font: "60px Arial", fill: "#ffffff" });  
 		  if(score == "undefined") score = 0;
 		  this.labelScore.text = ""+score; 
 		  
@@ -123,6 +123,7 @@ gameTitle.prototype = {
           menuGroup.add(share);
 		  this.POO = game.add.audio('POO');
 		  this.POO.play();
+		  this.POO.volume = 1;
 
           
      }
@@ -231,6 +232,7 @@ var mainState = {
         // Set the alive property of the bird to false
         this.bird.alive = false;
 		this.ow.play();
+		this.ow.volume = 1;
         // Prevent new pipes from appearing
         game.time.events.remove(this.timer);
     
@@ -265,6 +267,7 @@ var mainState = {
     
         this.score += 1;
 		this.hehe.play();
+		this.hehe.volume = 1;
         this.labelScore.text = this.score;  
 		score = this.score;
     },
