@@ -29,7 +29,7 @@
 	     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	     <meta name="HandheldFriendly" content="true" />		
 	     <meta name="mobile-web-app-capable" content="yes" />
-         
+             <script src="cordova.js"></script>
 
     <script type="text/javascript" src="./assets/js/phaser.js"></script>
     <script type="text/javascript" src="./assets/js/main.js"></script>
@@ -45,22 +45,14 @@
   <body data-link64watched="1" class="game">
 
     <div id="gameDiv"></div>
+
     <script src="./assets/js/admob.js"></script>
     <script type="text/javascript">
 function onDeviceReady() {
       document.removeEventListener('deviceready', onDeviceReady, false);
-
-      // Set AdMobAds options:
-      admob.setOptions({
-        publisherId:          "ca-app-pub-4905155282469394/3332065665",  // Required
-        interstitialAdId:     "ca-app-pub-4905155282469394/6425132868",  // Optional
-      });
-
-      // Start showing banners (atomatic when autoShowBanner is set to true)
-      admob.createBannerView();
-
-      // Request interstitial (will present automatically when autoShowInterstitial is set to true)
-      admob.requestInterstitialAd();
+	  
+	  admob.initAdmob("ca-app-pub-4905155282469394/3332065665","ca-app-pub-4905155282469394/6425132868");
+	  admob.showBanner(admob.BannerSize.BANNER,admob.Position.TOP_APP);//show banner at the top of app
     }
 
     document.addEventListener("deviceready", onDeviceReady, false);
