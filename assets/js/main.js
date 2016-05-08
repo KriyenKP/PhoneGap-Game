@@ -29,8 +29,8 @@ boot.prototype = {
 	    //game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
         //game.scale.setMaximum();
 		game.scale.setScreenSize = true;
-        //game.scale.pageAlignHorizontally = true;
-		//game.scale.pageAlignVertically = true;
+        game.scale.pageAlignHorizontally = true;
+		game.scale.pageAlignVertically = true;
         game.stage.backgroundColor = "#FFF";
      },
   	create: function(){
