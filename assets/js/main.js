@@ -3,8 +3,11 @@ var menuGroup;
 var score = 0 ;
 var reg = {};
 window.onload = function() {	
-      
-	game = new Phaser.Game(600, 1024, "gameDiv");
+    
+	var gameWidth = 320;var gameHeight = 480;
+	game = new Phaser.Game(600, 800, Phaser.AUTO, 'gameDiv');
+	  
+	//game = new Phaser.Game(650, 1024, "gameDiv");
     game.state.add("Boot", boot);
     game.state.add("Preload", preload);
     game.state.add("GameTitle", gameTitle);
@@ -23,10 +26,12 @@ var boot = function(game){};
 boot.prototype = {
      preload: function(){
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+	    //game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+        //game.scale.setMaximum();
 		game.scale.setScreenSize = true;
-        game.scale.pageAlignHorizontally = true;
-		game.scale.pageAlignVertically = true;
-        game.stage.backgroundColor = "#020028";
+        //game.scale.pageAlignHorizontally = true;
+		//game.scale.pageAlignVertically = true;
+        game.stage.backgroundColor = "#FFF";
      },
   	create: function(){
 		game.state.start("Preload");
