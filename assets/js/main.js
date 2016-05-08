@@ -5,7 +5,7 @@ var reg = {};
 window.onload = function() {	
     
 	var gameWidth = 320;var gameHeight = 480;
-	game = new Phaser.Game(580, 817, Phaser.AUTO, 'gameDiv');
+	game = new Phaser.Game(580, 900, Phaser.AUTO, 'gameDiv');
 	  
 	//game = new Phaser.Game(650, 1024, "gameDiv");
     game.state.add("Boot", boot);
@@ -56,7 +56,7 @@ loseState.prototype =
 
 
 		 this.road = game.add.sprite(0, 0, 'road'); 
-		 this.road.scale.setTo(1, 0.8);
+		 this.road.scale.setTo(1, 0.87);
 
 		  
 	
@@ -142,7 +142,7 @@ gameTitle.prototype = {
 
 		 
 		 this.road = game.add.sprite(0, 0, 'road'); 
-		 this.road.scale.setTo(1, 0.8);
+		 this.road.scale.setTo(1, 0.87);
 
           var title = game.add.sprite(game.width / 2, 100, "gametitle");
           title.anchor.set(0.5); 
@@ -513,7 +513,7 @@ var mainState = {
 		this.road = this.game.add.tileSprite(0, 0, 600, 1024, 'road');
         //this.road.autoScroll(-200, 0);
 		this.road.autoScroll(-100,0);
-	    this.road.scale.setTo(1, 0.8);
+	    this.road.scale.setTo(1, 0.87);
 
     	//this.road.width = game.width;
         this.pipes = game.add.group();
