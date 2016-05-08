@@ -5,7 +5,7 @@ var reg = {};
 window.onload = function() {	
     
 	var gameWidth = 320;var gameHeight = 480;
-	game = new Phaser.Game(600, 800, Phaser.AUTO, 'gameDiv');
+	game = new Phaser.Game(600, 1024, Phaser.AUTO, 'gameDiv');
 	  
 	//game = new Phaser.Game(650, 1024, "gameDiv");
     game.state.add("Boot", boot);
@@ -28,7 +28,7 @@ boot.prototype = {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	    //game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
         //game.scale.setMaximum();
-		game.scale.setScreenSize = true;
+		//game.scale.setScreenSize = true;
         game.scale.pageAlignHorizontally = true;
 		game.scale.pageAlignVertically = true;
         game.stage.backgroundColor = "#FFF";
