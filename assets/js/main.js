@@ -5,7 +5,7 @@ var reg = {};
 window.onload = function() {	
     
 	var gameWidth = 320;var gameHeight = 480;
-	game = new Phaser.Game(580, 920, Phaser.AUTO, 'gameDiv');
+	game = new Phaser.Game(580, 940, Phaser.AUTO, 'gameDiv');
 	  
 	//game = new Phaser.Game(650, 1024, "gameDiv");
     game.state.add("Boot", boot);
