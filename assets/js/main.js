@@ -5,7 +5,7 @@ var reg = {};
 window.onload = function() {	
     
 	var gameWidth = 320;var gameHeight = 480;
-	game = new Phaser.Game(600, 1024, Phaser.AUTO, 'gameDiv');
+	game = new Phaser.Game(580, 817, Phaser.AUTO, 'gameDiv');
 	  
 	//game = new Phaser.Game(650, 1024, "gameDiv");
     game.state.add("Boot", boot);
@@ -56,6 +56,7 @@ loseState.prototype =
 
 
 		 this.road = game.add.sprite(0, 0, 'road'); 
+		 this.road.scale.setTo(1, 0.8);
 
 		  
 	
@@ -72,7 +73,7 @@ loseState.prototype =
 		  this.labelScore.text = ""+score; 
 		  this.labelScore.anchor.set(0.5);
 		  
-          var playButton = game.add.button(game.world.centerX, game.height / 2 + 10, "playbutton", function()
+          var playButton = game.add.button(game.world.centerX, game.height / 2 + 30, "playbutton", function()
 		  {game.state.start('main');});
           playButton.anchor.set(0.5);
           menuGroup = game.add.group();
@@ -141,6 +142,8 @@ gameTitle.prototype = {
 
 		 
 		 this.road = game.add.sprite(0, 0, 'road'); 
+		 this.road.scale.setTo(1, 0.8);
+
           var title = game.add.sprite(game.width / 2, 100, "gametitle");
           title.anchor.set(0.5); 
 		  
@@ -505,19 +508,20 @@ var mainState = {
     create: function() { 
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
-		this.road = game.add.sprite(0, 0, 'road'); 
+		//this.road = game.add.sprite(0, 20, 'road'); 
 		
 		this.road = this.game.add.tileSprite(0, 0, 600, 1024, 'road');
         //this.road.autoScroll(-200, 0);
-		this.road.height = game.height;
 		this.road.autoScroll(-100,0);
+	    this.road.scale.setTo(1, 0.8);
+
     	//this.road.width = game.width;
         this.pipes = game.add.group();
         this.timer = game.time.events.loop(2300, this.addRowOfPipes, this);           
  		this.hands = game.add.sprite(0, game.height / 2 - 250, 'hands');
-        this.bird = game.add.sprite(100, 240, 'bird');
-		this.bird.height = 95;
-		this.bird.width = 100;
+        this.bird = game.add.sprite(90, 66, 'bird');
+
+
         game.physics.arcade.enable(this.bird);
         this.bird.body.gravity.y = 1000; 
 
