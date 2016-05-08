@@ -76,18 +76,20 @@ loseState.prototype =
 		  {game.state.start('main');});
           playButton.anchor.set(0.5);
           menuGroup = game.add.group();
-          var menuButton = game.add.button(game.width / 2, game.height - 30, "menubutton", toggleMenu);
+          
+		  var menuButton = game.add.button(game.width / 2, game.height - 30, "menubutton", toggleMenu);
           menuButton.anchor.set(0.5);
           menuGroup.add(menuButton);
-          var resetGame = game.add.button(game.width / 2, game.height + 50, "resetgame", function()
-		  {game.state.start('Boot'); this.loseSound.pause();});
+          
+		  
+		  var resetGame = game.add.button(game.width / 2, game.height + 130, "resetgame", function(){game.state.start('Boot'); this.loseSound.pause();});
           resetGame.anchor.set(0.5);
           menuGroup.add(resetGame);
-          var thankYou = game.add.button(game.width / 2, game.height + 130, "thankyou", function()
-		  {this.loseSound.stop();});
-          thankYou.anchor.set(0.5);
-          menuGroup.add(thankYou);  
-  
+		  
+		  
+          var share = game.add.button(game.width / 2, game.height + 50, "share", showModal1);
+          share.anchor.set(0.5);
+          menuGroup.add(share);
      }
 }
 
